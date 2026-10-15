@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwasthyaSakhi | Frontline Health-Worker Companion</title>
+    <meta
+      name="description"
+      content="SwasthyaSakhi is a frontline health-worker companion for low-connectivity areas."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="auth-page" id="authPage">
+      <section class="auth-panel" aria-labelledby="authTitle">
+        <div class="brand-block auth-brand">
+          <div class="brand-badge">✚</div>
+          <div>
+            <div class="brand-title">SwasthyaSakhi</div>
+            <div class="brand-subtitle">Frontline Health-Worker Companion</div>
+          </div>
+        </div>
+        <h1 id="authTitle">Sign in</h1>
+        <p class="auth-intro">Sign in with a demo account to open its role-specific workspace.</p>
+        <form id="signInForm" class="auth-form">
+          <label for="signInEmail">Email</label>
+          <input id="signInEmail" name="email" type="email" autocomplete="username" required />
+          <label for="signInPassword">Password</label>
+          <input id="signInPassword" name="password" type="password" autocomplete="current-password" required />
+          <button id="signInBtn" class="primary-btn" type="submit">Sign in</button>
+        </form>
+        <p class="auth-status" id="authStatus" role="status" aria-live="polite"></p>
+        <details class="demo-accounts">
+          <summary>Demo accounts</summary>
+          <ul>
+            <li>Worker: worker.demo@example.com / WorkerDemo!2026</li>
+            <li>Supervisor: supervisor.demo@example.com / SupervisorDemo!2026</li>
+            <li>Admin: admin.demo@example.com / AdminDemo!2026</li>
+          </ul>
+          <p>These accounts are for local demonstration only. This sign-in does not provide real security.</p>
+        </details>
+      </section>
+    </main>
+
+    <div class="app-shell" id="appShell" hidden>
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-block">
+          <div class="brand-badge">✚</div>
+          <div>
+            <div class="brand-title">SwasthyaSakhi</div>
+            <div class="brand-subtitle" data-i18n="app.subtitle">Frontline Health-Worker Companion</div>
+            <div class="account-label" id="currentUserLabel"></div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <button class="nav-item active" data-page="dashboard-page" data-i18n="nav.dashboard">Dashboard</button>
+          <button class="nav-item" data-page="visits-page" data-i18n="nav.visits">Household Visits</button>
+          <button class="nav-item" data-page="assistant-page" data-i18n="nav.assistant">Health Assistant</button>
+          <button class="nav-item" data-page="protocols-page" data-i18n="nav.protocols">Health Protocols</button>
+          <button class="nav-item" data-page="offline-page" data-i18n="nav.sync">Offline &amp; Sync</button>
+          <button class="nav-item" data-page="onboarding-page" data-i18n="nav.onboarding">Worker Orientation</button>
+        </nav>
+
+        <button class="logout-btn" id="logoutBtn" type="button" data-i18n="nav.logout">Log out</button>
+
+        <div class="sidebar-card safety-card">
+          <div class="card-kicker" data-i18n="safety.kicker">Safety reminder</div>
+          <p data-i18n="safety.sidebarText">
+            Follow approved local referral steps in emergencies. This demo is not a clinical decision tool.
+          </p>
+        </div>
+      </aside>
+
+      <button class="mobile-scrim" type="button" aria-label="Close navigation" tabindex="-1"></button>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <button class="mobile-toggle" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false" type="button">☰</button>
+          <div class="top-bar-title">
+            <span class="title" data-i18n="app.tagline">Reliable guidance. Safer communities. Even offline.</span>
+          </div>
+          <div class="top-actions">
+            <span class="date-pill" id="currentDate" aria-live="polite"></span>
+            <label class="language-picker" for="languageSelect">
+              <span data-i18n="language.label">Language</span>
+              <select id="languageSelect" aria-label="Select language">
+                <option value="en">English</option>
+                <option value="te">తెలుగు</option>
+              </select>
+            </label>
+          </div>
+        </header>
+
+        <div class="page active" id="dashboard-page">
+          <section class="hero-panel">
+            <div>
+              <p class="eyebrow" data-i18n="dashboard.greetingLabel">Good morning</p>
+              <h1 id="greetingText" data-i18n="dashboard.greetingMorning">Good morning</h1>
+            </div>
+            <div class="hero-summary">
+              <span class="dot"></span>
+              <span data-i18n="dashboard.prototypeNote">Authenticated workspace</span>
+            </div>
+          </section>
+
+          <section class="stats-grid">
+            <article class="stat-card accent">
+              <div class="stat-label" data-i18n="dashboard.totalPlanned">Total planned households</div>
+              <div class="stat-value" id="totalHouseholdsValue">0</div>
+            </article>
+            <article class="stat-card success">
+              <div class="stat-label" data-i18n="dashboard.completed">Completed households</div>
+              <div class="stat-value" id="completedHouseholdsValue">0</div>
+            </article>
+            <article class="stat-card info">
+              <div class="stat-label" data-i18n="dashboard.remaining">Remaining households</div>
+              <div class="stat-value" id="remainingHouseholdsValue">0</div>
+            </article>
+            <article class="stat-card warning">
+              <div class="stat-label" data-i18n="dashboard.followUp">Follow-up households</div>
+              <div class="stat-value" id="followUpHouseholdsValue">0</div>
+            </article>
+          </section>
+
+          <section class="mini-grid">
+            <article class="mini-card">
+              <div class="mini-label" data-i18n="dashboard.savedRecords">Assigned household records</div>
+              <div class="mini-value" id="savedRecordsValue">0</div>
+            </article>
+            <article class="mini-card">
+              <div class="mini-label" data-i18n="dashboard.pendingSync">Records awaiting sync</div>
+              <div class="mini-value" id="pendingSyncValue">0</div>
+            </article>
+            <article class="mini-card">
+              <div class="mini-label" data-i18n="dashboard.upcomingVisits">Upcoming household visits</div>
+              <div class="mini-value" id="upcomingVisitsValue">0</div>
+            </article>
+          </section>
+
+          <section class="dashboard-row">
+            <article class="panel-card">
+              <div class="panel-header">
+                <h2 data-i18n="dashboard.quickActions">Quick actions</h2>
+              </div>
+              <div class="action-grid">
+                <button class="action-btn" data-action="onboarding" data-i18n="dashboard.actionOnboarding">Worker Orientation</button>
+                <button class="action-btn" data-action="assistant" data-i18n="dashboard.actionAssistant">Health Assistant</button>
+                <button class="action-btn" data-action="visits" data-i18n="dashboard.actionVisits">Household Visits</button>
+                <button class="action-btn" data-action="protocols" data-i18n="dashboard.actionProtocols">Health Protocols</button>
+                <button class="action-btn" data-action="offline" data-i18n="dashboard.actionSync">Offline &amp; Sync</button>
+              </div>
+            </article>
+
+            <article class="panel-card">
+              <div class="panel-header">
+                <h2 data-i18n="dashboard.upcomingListTitle">Upcoming household visits</h2>
+              </div>
+              <ul class="visit-list" id="upcomingVisitsList"></ul>
+            </article>
+          </section>
+
+          <section class="dashboard-row">
+            <article class="panel-card warning-card">
+              <div class="panel-header">
+                <h2 data-i18n="dashboard.safetyHeading">Safety reminders</h2>
+              </div>
+              <ul class="reminder-list">
+                <li data-i18n="dashboard.reminder1">Seek emergency help immediately for severe bleeding, breathing difficulty, unconsciousness, or sudden newborn distress.</li>
+                <li data-i18n="dashboard.reminder2">Do not enter personal patient identifiers into this demo or any public workspace.</li>
+                <li data-i18n="dashboard.reminder3">Use the approved local referral pathway for urgent cases and ask a clinician when unsure.</li>
+              </ul>
+            </article>
+
+            <article class="panel-card prototype-card">
+              <div class="panel-header">
+                <h2 data-i18n="dashboard.prototypeHeading">Prototype disclaimer</h2>
+              </div>
+              <p data-i18n="dashboard.prototypeBody">
+                Household records in this demo are synthetic and stored only in this browser. Do not enter real patient information.
+              </p>
+            </article>
+          </section>
+        </div>
+
+        <div class="page" id="onboarding-page">
+          <section class="onboarding-wrap">
+            <div class="panel-card onboarding-card">
+              <div class="onboarding-header">
+                <div>
+                  <p class="eyebrow" data-i18n="onboarding.welcomeEyebrow">Welcome</p>
+                  <h2 id="onboardingTitle" data-i18n="onboarding.title">Worker Onboarding</h2>
+                </div>
+                <div class="onboarding-badges">
+                  <span class="chip" id="tourStepBadge">Step 1 of 7</span>
+                </div>
+              </div>
+
+              <div class="onboarding-content" id="onboardingContent">
+                <p data-i18n="onboarding.welcomeIntro">
+                  SwasthyaSakhi helps frontline workers support families with simple health guidance, safer visit records, and clear next steps even when connection is weak.
+                </p>
+              </div>
+
+              <div class="language-onboarding-row">
+                <label for="onboardingLanguageSelect" data-i18n="language.label">Language</label>
+                <select id="onboardingLanguageSelect" aria-label="Choose onboarding language">
+                  <option value="en">English</option>
+                  <option value="te">తెలుగు</option>
+                </select>
+              </div>
+
+              <div class="checklist-block" id="quickChecklist">
+                <h3 data-i18n="onboarding.checklistTitle">Quick-start checklist</h3>
+                <ul>
+                  <li data-i18n="onboarding.checklist1">Choose preferred language.</li>
+                  <li data-i18n="onboarding.checklist2">Complete the application tour.</li>
+                  <li data-i18n="onboarding.checklist3">Open a sample household record.</li>
+                  <li data-i18n="onboarding.checklist4">Try one example question.</li>
+                  <li data-i18n="onboarding.checklist5">Read the safety disclaimer.</li>
+                </ul>
+              </div>
+
+              <div class="tour-actions">
+                <button id="startTourBtn" class="primary-btn" data-i18n="onboarding.startTour">Start Tour</button>
+                <button id="skipTourBtn" class="secondary-btn" data-i18n="onboarding.skipTour">Skip Tour</button>
+                <button id="restartTourBtn" class="ghost-btn" data-i18n="onboarding.restartTour">Restart Tour</button>
+              </div>
+
+              <div class="tour-nav">
+                <button id="prevTourBtn" class="secondary-btn" data-i18n="onboarding.previous">Previous</button>
+                <button id="nextTourBtn" class="primary-btn" data-i18n="onboarding.next">Next</button>
+                <button id="finishTourBtn" class="primary-btn hidden" data-i18n="onboarding.finish">Finish</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="page" id="visits-page">
+          <section class="panel-card">
+            <div class="panel-header page-header">
+              <h2 data-i18n="visits.title">Household Visits</h2>
+            </div>
+
+            <div class="toolbar">
+              <input id="householdSearch" type="search" placeholder="Search by demo ID" data-i18n-placeholder="visits.searchPlaceholder" />
+              <select id="statusFilter" aria-label="Filter by status">
+                <option value="all" data-i18n="visits.filterAll">All statuses</option>
+                <option value="Pending" data-i18n="visits.filterPending">Pending</option>
+                <option value="In Progress" data-i18n="visits.filterInProgress">In Progress</option>
+                <option value="Completed" data-i18n="visits.filterCompleted">Completed</option>
+                <option value="Follow-up Required" data-i18n="visits.filterFollowUp">Follow-up Required</option>
+              </select>
+              <select id="categoryFilter" aria-label="Filter by category">
+                <option value="all" data-i18n="visits.filterCategoryAll">All categories</option>
+              </select>
+            </div>
+
+            <div class="visit-content">
+              <div class="visit-list-panel" id="visitList"></div>
+              <div class="visit-detail-panel" id="householdDetail">
+                <div class="empty-detail" data-i18n="visits.emptyDetail">Select a household to view details.</div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="page" id="assistant-page">
+          <section class="panel-card assistant-card">
+            <div class="panel-header">
+              <h2 data-i18n="assistant.title">Health Assistant</h2>
+            </div>
+            <div class="assistant-safety-banner" data-i18n="assistant.safetyBanner">
+              Demo answers are illustrative and not clinically validated. Do not share identifiable patient information.
+            </div>
+
+            <div class="example-prompts" id="examplePrompts"></div>
+
+            <div class="chat-log" id="chatLog" aria-live="polite"></div>
+
+            <div class="chat-controls">
+              <div class="chat-input-wrap">
+                <input id="assistantInput" type="text" placeholder="Ask a question about routine care or warning signs" data-i18n-placeholder="assistant.placeholder" aria-label="Ask the health assistant" />
+                <button id="micBtn" class="icon-btn" type="button" aria-label="Use voice input" title="Voice input">🎙️</button>
+              </div>
+              <div class="chat-actions-row">
+                <button id="assistantSubmitBtn" class="primary-btn" data-i18n="assistant.submit">Send</button>
+                <button id="stopSpeechBtn" class="secondary-btn" data-i18n="assistant.stopSpeech">Stop Speaking</button>
+              </div>
+            </div>
+            <div id="voiceStatus" class="voice-status" aria-live="polite"></div>
+          </section>
+        </div>
+
+        <div class="page" id="protocols-page">
+          <section class="panel-card">
+            <div class="panel-header">
+              <h2 data-i18n="protocols.title">Health Protocols</h2>
+            </div>
+            <div class="toolbar protocols-toolbar">
+              <input id="protocolSearch" type="search" placeholder="Search protocols" data-i18n-placeholder="protocols.searchPlaceholder" />
+            </div>
+            <div class="protocol-grid" id="protocolGrid"></div>
+          </section>
+        </div>
+
+        <div class="page" id="offline-page">
+          <section class="panel-card offline-card">
+            <div class="panel-header">
+              <h2 data-i18n="offline.title">Offline &amp; Sync</h2>
+            </div>
+            <div class="offline-summary-grid">
+              <article class="mini-card">
+                <div class="mini-label" data-i18n="offline.savedRecords">Records in your workspace</div>
+                <div class="mini-value" id="offlineSavedRecords">0</div>
+              </article>
+              <article class="mini-card">
+                <div class="mini-label" data-i18n="offline.pendingSync">Pending sync queue</div>
+                <div class="mini-value" id="offlinePendingSync">0</div>
+              </article>
+            </div>
+
+            <div class="sync-info">
+              <p data-i18n="offline.info">
+                Household records are saved locally under the current demo account. This page lists records still marked as pending demo sync.
+              </p>
+              <p class="warning-inline" data-i18n="offline.warning">
+                Demo roles and account-specific browser storage are not real security. Do not use this app for patient information.
+              </p>
+            </div>
+
+            <div class="sync-actions">
+              <button id="simulateSyncBtn" class="primary-btn" data-i18n="offline.simulateSync">Mark records synced</button>
+            </div>
+
+            <div class="sync-list-wrap">
+              <h3 data-i18n="offline.queueTitle">Pending sync records</h3>
+              <ul id="syncQueueList" class="sync-queue"></ul>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

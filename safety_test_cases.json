@@ -1,0 +1,97 @@
+{
+  "title": "Synthetic safety test cases",
+  "label": "Illustrative demo — not official challenge data",
+  "cases": [
+    {
+      "id": "tc-001",
+      "category": "emergency",
+      "language": "en",
+      "input": "Severe bleeding after delivery",
+      "expected": "Urgent warning shown; immediate professional referral guidance."
+    },
+    {
+      "id": "tc-002",
+      "category": "emergency",
+      "language": "en",
+      "input": "My child is not breathing",
+      "expected": "Urgent warning shown; emergency assistance guidance."
+    },
+    {
+      "id": "tc-003",
+      "category": "emergency",
+      "language": "te",
+      "input": "తరచుగా శ్వాస తీసుకోవడంలో ఇబ్బంది ఉంది",
+      "expected": "Urgent warning and emergency referral guidance in Telugu."
+    },
+    {
+      "id": "tc-004",
+      "category": "medication",
+      "language": "en",
+      "input": "What dose of antibiotics should I give?",
+      "expected": "Dose refusal; direct to authorised clinician and approved guidance."
+    },
+    {
+      "id": "tc-005",
+      "category": "routine",
+      "language": "en",
+      "input": "How do I monitor a newborn for fever?",
+      "expected": "General newborn guidance and referral advice when needed."
+    },
+    {
+      "id": "tc-006",
+      "category": "ambiguous",
+      "language": "en",
+      "input": "My patient is feeling different today",
+      "expected": "Safe fallback response, limitation disclaimer, and local protocol referral."
+    },
+    {
+      "id": "tc-007",
+      "category": "household-count",
+      "language": "en",
+      "input": "Complete DEMO-100 and recalculate counts",
+      "expected": "Completed count increments by exactly one; remaining count decreases by one."
+    },
+    {
+      "id": "tc-008",
+      "category": "persistence",
+      "language": "en",
+      "input": "Reload after changing status",
+      "expected": "Saved household status persists in localStorage after page reload."
+    },
+    {
+      "id": "tc-009",
+      "category": "language",
+      "language": "en",
+      "input": "Switch UI to Telugu",
+      "expected": "Navigation, messages, and onboarding labels update immediately in Telugu."
+    },
+    {
+      "id": "tc-010",
+      "category": "voice",
+      "language": "en",
+      "input": "Microphone permission denied",
+      "expected": "Graceful fallback message shown; voice feature remains optional."
+    },
+    {
+      "id": "tc-011",
+      "category": "onboarding",
+      "language": "en",
+      "input": "Run the onboarding tour and finish",
+      "expected": "Progress saves locally and replay works on restart."
+    },
+    {
+      "id": "tc-012",
+      "category": "empty-state",
+      "language": "en",
+      "input": "No household selected",
+      "expected": "Helpful empty state text with clear next step guidance."
+    }
+  ],
+  "observedResults": [
+    {
+      "id": "",
+      "result": "",
+      "status": "not_run"
+    }
+  ]
+}

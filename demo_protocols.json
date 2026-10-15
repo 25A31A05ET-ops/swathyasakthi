@@ -1,0 +1,65 @@
+[
+  {
+    "id": "maternal-01",
+    "title": "Maternal health check-in",
+    "category": "Maternal health",
+    "description": "Review bleeding, dizziness, and blood pressure concerns during pregnancy follow-up visits.",
+    "safetyNote": "Urgent symptoms should be escalated to a qualified clinician using local referral pathways.",
+    "sourceStatus": "Illustrative demo",
+    "reviewStatus": "Not yet reviewed"
+  },
+  {
+    "id": "newborn-01",
+    "title": "Newborn danger signs",
+    "category": "Newborn health",
+    "description": "Look for fever, poor feeding, irregular breathing, jaundice, lethargy, or weak cry during newborn visits.",
+    "safetyNote": "Any severe newborn warning sign should trigger urgent referral and clinician review.",
+    "sourceStatus": "Illustrative demo",
+    "reviewStatus": "Not yet reviewed"
+  },
+  {
+    "id": "emergency-01",
+    "title": "Emergency referral pathway",
+    "category": "Emergency referral",
+    "description": "Use the approved referral steps for severe bleeding, breathing difficulty, unconsciousness, or seizure concerns.",
+    "safetyNote": "This is a training example only; follow local emergency protocols and approved referral plans.",
+    "sourceStatus": "Illustrative demo",
+    "reviewStatus": "Not yet reviewed"
+  },
+  {
+    "id": "followup-01",
+    "title": "Household follow-up routine",
+    "category": "Household follow-up",
+    "description": "Repeat reminders, ask about recent symptoms, and record completion status after each scheduled visit.",
+    "safetyNote": "Do not record personal identifiers or medical histories in this demo environment.",
+    "sourceStatus": "Illustrative demo",
+    "reviewStatus": "Not yet reviewed"
+  },
+  {
+    "id": "hygiene-01",
+    "title": "Hygiene and general health education",
+    "category": "Hygiene and general health",
+    "description": "Share safe water, handwashing, waste disposal, and basic infection-prevention habits with households.",
+    "safetyNote": "This content is general education only and should not replace local public health guidance.",
+    "sourceStatus": "Illustrative demo",
+    "reviewStatus": "Not yet reviewed"
+  },
+  {
+    "id": "data-01",
+    "title": "Safe data recording",
+    "category": "Safe data recording",
+    "description": "Use synthetic IDs, keep notes brief, and avoid personal identifiers in demo records.",
+    "safetyNote": "Do not store or upload real medical histories in local browser demos.",
+    "sourceStatus": "Illustrative demo",
+    "reviewStatus": "Not yet reviewed"
+  },
+  {
+    "id": "offline-01",
+    "title": "Offline workflows",
+    "category": "Offline workflows",
+    "description": "Document the visit, save locally, and only sync when a supported process and approval system are available.",
+    "safetyNote": "Browser localStorage is not secure patient storage or a production backend.",
+    "sourceStatus": "Illustrative demo",
+    "reviewStatus": "Not yet reviewed"
+  }
+]
